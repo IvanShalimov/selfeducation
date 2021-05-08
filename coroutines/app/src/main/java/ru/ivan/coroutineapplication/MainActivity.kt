@@ -1,21 +1,18 @@
 package ru.ivan.coroutineapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import kotlinx.coroutines.*
-import java.text.SimpleDateFormat
-import java.util.*
-import java.util.concurrent.TimeUnit
 
 /**
  * Курс по корутинам был взят здесь: https://startandroid.ru/ru/courses/kotlin.html
  */
 class MainActivity : AppCompatActivity() {
 
-    private var formatter = SimpleDateFormat("HH:mm:ss.SSS", Locale.getDefault())
-    private val scope:CoroutineScope = CoroutineScope(Job())
+    private val scope: CoroutineScope = CoroutineScope(Job())
     lateinit var cancelableJob: Job
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,11 +35,11 @@ class MainActivity : AppCompatActivity() {
                 delay(1000)
                 launch {
                     delay(5000)
-                    Log.d(TAG,"third coroutine "+hashCode())
+                    Log.d(TAG, "third coroutine " + hashCode())
                 }
-                Log.d(TAG,"second coroutine "+hashCode())
+                Log.d(TAG, "second coroutine " + hashCode())
             }
-            Log.d(TAG, "first coroutine "+hashCode())
+            Log.d(TAG, "first coroutine " + hashCode())
         }
 
         val job = scope.launch {
@@ -52,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /* Обработчик нажатия для кнопки с id="@+id/lesson_eight_run" */
-    fun onRun(view:View) {
+    fun onRun(view: View) {
         log("onRun, start")
         scope.launch {
             log("coroutine start")
@@ -83,17 +80,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     /* Обработчик нажатия для кнопки с id="@+id/lesson_eight_cancel" */
-    fun onCancel(view:View) {
+    fun onCancel(view: View) {
         log("onCancel")
         cancelableJob.cancel()
     }
 
-    /*Метод с логами для урока # 8*/
-    private fun log(text:String) {
-        Log.d(TAG, "${formatter.format(Date())} $text [${Thread.currentThread().name}]")
+    fun nextLesson(view: View) {
+        startActivity(Intent(applicationContext, Lesson9Activity::class.java))
     }
 
-    companion object {
-        private const val TAG = "Ivan"
-    }
+
 }
