@@ -5,11 +5,16 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Lesson 9"
+        android:label="Coroutines"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.СoroutineApplication">
-        <activity android:name=".Lesson9Activity"></activity>
+        <activity
+            android:name=".Lesson10Activity"
+            android:label="Lesson10" />
+        <activity
+            android:name=".Lesson9Activity"
+            android:label="Lesson 9" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

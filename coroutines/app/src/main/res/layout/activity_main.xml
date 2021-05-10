@@ -65,10 +65,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Lesson 9"
         android:onClick="nextLesson"
+        android:text="Lesson 9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lesson_eight_cancel" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="Lesson 10"
+        android:onClick="openLesson10"
+        app:layout_constraintEnd_toEndOf="@+id/nextLessonButton"
+        app:layout_constraintStart_toStartOf="@+id/nextLessonButton"
+        app:layout_constraintTop_toBottomOf="@+id/nextLessonButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
