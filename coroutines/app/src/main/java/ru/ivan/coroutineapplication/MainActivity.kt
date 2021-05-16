@@ -97,5 +97,9 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(applicationContext, Lesson13Activity::class.java))
     }
 
+    fun openLesson16(view: View) {
+        startActivity(Intent(applicationContext, LessonActivity16::class.java))
+    }
+
 
 }
