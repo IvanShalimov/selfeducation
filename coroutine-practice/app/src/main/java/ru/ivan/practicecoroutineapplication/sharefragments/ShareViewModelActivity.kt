@@ -35,7 +35,6 @@ class ShareViewModelActivity : AppCompatActivity() {
         val masterFragment = MainFragment.newInstance()
         supportFragmentManager.commit{
             replace(R.id.container, masterFragment)
-
         }
     }
 
