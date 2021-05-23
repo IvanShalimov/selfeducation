@@ -48,8 +48,9 @@ class InsultMainFragment : Fragment() {
             view.findViewById<ImageView>(R.id.favoriteIcon).setOnClickListener {
                 viewModel.onFavoriteClick()
             }
-
-
+            view.findViewById<ImageView>(R.id.favoriteListIButton).setOnClickListener {
+                viewModel.changeFragment.value = true
+            }
         }
 
 

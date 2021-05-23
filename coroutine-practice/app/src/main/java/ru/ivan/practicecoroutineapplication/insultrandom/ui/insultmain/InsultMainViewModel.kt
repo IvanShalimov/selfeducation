@@ -21,7 +21,7 @@ class InsultMainViewModel(private val app: Application) : AndroidViewModel(app) 
     private val roomMapper: RoomMapper = RoomMapper()
     val insult: MutableLiveData<InsultPresentationModel> = MutableLiveData()
     val changeIcon = MutableLiveData<Boolean>()
-
+    val changeFragment = MutableLiveData<Boolean>()
 
     init {
         database =  DatabaseRepository(getApplication())
