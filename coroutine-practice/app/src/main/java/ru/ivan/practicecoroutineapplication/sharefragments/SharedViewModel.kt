@@ -1,9 +1,7 @@
 package ru.ivan.practicecoroutineapplication.sharefragments
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import kotlinx.coroutines.launch
 
 class SharedViewModel: ViewModel() {
 
@@ -26,6 +24,10 @@ class SharedViewModel: ViewModel() {
 
     fun subscribeFlag(): LiveData<Int> {
         return flag
+    }
+
+    fun testCoroutineShit(){
+        viewModelScope.launch {  }
     }
 
 }
