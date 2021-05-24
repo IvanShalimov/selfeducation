@@ -3,14 +3,19 @@ package ru.ivan.practicecoroutineapplication.insultrandom.ui.insultmain
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.Response
 import ru.ivan.practicecoroutineapplication.insultrandom.ui.models.InsultPresentationModel
 import ru.ivan.practicecoroutineapplication.insultrandom.ui.repository.retrofitrepo.API
 import ru.ivan.practicecoroutineapplication.insultrandom.ui.repository.retrofitrepo.APIRetrofitImpl
 import ru.ivan.practicecoroutineapplication.insultrandom.ui.repository.roomrepo.DatabaseRepository
 import ru.ivan.practicecoroutineapplication.insultrandom.ui.repository.roomrepo.RoomMapper
+
 
 class InsultMainViewModel(private val app: Application) : AndroidViewModel(app) {
 
@@ -25,7 +30,8 @@ class InsultMainViewModel(private val app: Application) : AndroidViewModel(app) 
 
     init {
         database =  DatabaseRepository(getApplication())
-        fetchInsultAlt()
+            //fetchInsultAlt()
+        request()
     }
 
     fun fetchInsult() {
@@ -82,6 +88,25 @@ class InsultMainViewModel(private val app: Application) : AndroidViewModel(app) 
                     database.insert(roomMapper.prepareForDatabase(it))
                 }
             }
+        }
+    }
+
+    fun request() {
+        viewModelScope.launch {
+            val result = okhttpReqesut()
+            Log.d("Ivan","$result")
+        }
+    }
+
+    suspend fun okhttpReqesut(): String{
+        return withContext(Dispatchers.IO) {
+            val client = OkHttpClient()
+            val request = Request.Builder().addHeader("Content-Type","application/json")
+                .url("https://evilinsult.com/generate_insult.php?lang=en&type=json")
+                .build()
+
+            val response = client.newCall(request).execute()
+            response.body()?.string() ?: "{loh}"
         }
     }
 
