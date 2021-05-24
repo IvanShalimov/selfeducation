@@ -1,6 +1,7 @@
 package ru.ivan.practicecoroutineapplication.insultrandom.ui.insultmain
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -23,7 +24,7 @@ class InsultMainViewModel(private val app: Application) : AndroidViewModel(app) 
 
     init {
         database =  DatabaseRepository(getApplication())
-        fetchInsult()
+        fetchInsultAlt()
     }
 
     fun fetchInsult() {
@@ -34,9 +35,30 @@ class InsultMainViewModel(private val app: Application) : AndroidViewModel(app) 
             api.getInsult()?.let {
                 insult.value = it
 
-               /* database.getModel(it.number).let {
+                database.getModel(it.number).let {
                     changeIcon.value = true
-                }*/
+                }
+            }
+        }
+    }
+
+    /**Using kotlin runCatching */
+    fun fetchInsultAlt(){
+        requestJob?.let {
+            if (it.isActive) return
+        }
+
+        requestJob = viewModelScope.launch {
+            kotlin.runCatching {
+                api.getInsult()
+            }.onSuccess {
+                insult.value = it
+
+                database.getModel(it?.number?: "").let {
+                    changeIcon.value = true
+                }
+            }.onFailure {
+                Log.d("Ivan","${it.message}")
             }
         }
     }

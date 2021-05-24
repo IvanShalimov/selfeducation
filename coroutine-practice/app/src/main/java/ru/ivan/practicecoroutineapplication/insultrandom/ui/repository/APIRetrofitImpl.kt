@@ -1,6 +1,5 @@
 package ru.ivan.practicecoroutineapplication.insultrandom.ui.repository
 
-import android.util.Log
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 import ru.ivan.practicecoroutineapplication.insultrandom.ui.models.InsultPresentationModel
@@ -26,7 +25,6 @@ class APIRetrofitImpl : API {
             return null
         }
 
-        Log.d("Ivan","$response")
         return if(response.isSuccessful) {
             response.body()?.let {
                 mapper.map(it)
