@@ -1,4 +1,4 @@
-package ru.ivan.practicecoroutineapplication.insultrandom.ui.repository
+package ru.ivan.practicecoroutineapplication.insultrandom.ui.repository.roomrepo
 
 import ru.ivan.practicecoroutineapplication.insultrandom.ui.models.InsultPresentationModel
 import ru.ivan.practicecoroutineapplication.insultrandom.ui.repository.models.InsultRoomModel

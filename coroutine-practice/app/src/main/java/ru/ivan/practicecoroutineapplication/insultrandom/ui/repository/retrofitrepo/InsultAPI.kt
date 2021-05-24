@@ -1,4 +1,4 @@
-package ru.ivan.practicecoroutineapplication.insultrandom.ui.repository
+package ru.ivan.practicecoroutineapplication.insultrandom.ui.repository.retrofitrepo
 
 import retrofit2.Response
 import retrofit2.http.GET

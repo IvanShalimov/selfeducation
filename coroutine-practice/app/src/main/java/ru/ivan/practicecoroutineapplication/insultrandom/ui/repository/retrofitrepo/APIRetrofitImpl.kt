@@ -1,4 +1,4 @@
-package ru.ivan.practicecoroutineapplication.insultrandom.ui.repository
+package ru.ivan.practicecoroutineapplication.insultrandom.ui.repository.retrofitrepo
 
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory

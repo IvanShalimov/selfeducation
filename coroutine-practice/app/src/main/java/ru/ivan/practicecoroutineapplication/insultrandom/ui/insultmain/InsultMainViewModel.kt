@@ -5,11 +5,12 @@ import android.util.Log
 import androidx.lifecycle.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import okhttp3.Response
 import ru.ivan.practicecoroutineapplication.insultrandom.ui.models.InsultPresentationModel
-import ru.ivan.practicecoroutineapplication.insultrandom.ui.repository.API
-import ru.ivan.practicecoroutineapplication.insultrandom.ui.repository.APIRetrofitImpl
-import ru.ivan.practicecoroutineapplication.insultrandom.ui.repository.DatabaseRepository
-import ru.ivan.practicecoroutineapplication.insultrandom.ui.repository.RoomMapper
+import ru.ivan.practicecoroutineapplication.insultrandom.ui.repository.retrofitrepo.API
+import ru.ivan.practicecoroutineapplication.insultrandom.ui.repository.retrofitrepo.APIRetrofitImpl
+import ru.ivan.practicecoroutineapplication.insultrandom.ui.repository.roomrepo.DatabaseRepository
+import ru.ivan.practicecoroutineapplication.insultrandom.ui.repository.roomrepo.RoomMapper
 
 class InsultMainViewModel(private val app: Application) : AndroidViewModel(app) {
 
@@ -44,6 +45,8 @@ class InsultMainViewModel(private val app: Application) : AndroidViewModel(app) 
 
     /**Using kotlin runCatching */
     fun fetchInsultAlt(){
+        val Response:Response
+
         requestJob?.let {
             if (it.isActive) return
         }

@@ -1,4 +1,4 @@
-package ru.ivan.practicecoroutineapplication.insultrandom.ui.repository
+package ru.ivan.practicecoroutineapplication.insultrandom.ui.repository.roomrepo
 
 import androidx.room.Dao
 import androidx.room.Insert
