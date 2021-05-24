@@ -27,9 +27,6 @@ class InsultActivity : AppCompatActivity() {
                 }
             }
         }
-
-
-
     }
 
     private fun openFavoriteList() {

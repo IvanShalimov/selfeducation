@@ -7,15 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ru.ivan.practicecoroutineapplication.R
 import ru.ivan.practicecoroutineapplication.insultrandom.ui.insultmain.InsultMainViewModel
+import ru.ivan.practicecoroutineapplication.insultrandom.ui.models.InsultPresentationModel
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FavoriteInsultsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FavoriteInsultsFragment : Fragment() {
 
     companion object {
@@ -23,6 +21,7 @@ class FavoriteInsultsFragment : Fragment() {
     }
 
     private lateinit var viewModel: InsultMainViewModel
+    private val adapter:FavoritesAdapter = FavoritesAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +34,13 @@ class FavoriteInsultsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(InsultMainViewModel::class.java)
 
+        val recycler = view.findViewById<RecyclerView>(R.id.favoritesList)
+        recycler.layoutManager = LinearLayoutManager(context)
+        recycler.adapter = adapter
+
+        viewModel.getFavoritesList().observe(this as LifecycleOwner) { list ->
+            adapter.list = list as MutableList<InsultPresentationModel>
+        }
     }
 
 }

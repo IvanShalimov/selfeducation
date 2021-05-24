@@ -1,9 +1,7 @@
 package ru.ivan.practicecoroutineapplication.insultrandom.ui.insultmain
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import ru.ivan.practicecoroutineapplication.insultrandom.ui.models.InsultPresentationModel
@@ -36,9 +34,9 @@ class InsultMainViewModel(private val app: Application) : AndroidViewModel(app) 
             api.getInsult()?.let {
                 insult.value = it
 
-                database.getModel(it.number)?.let {
+               /* database.getModel(it.number).let {
                     changeIcon.value = true
-                }
+                }*/
             }
         }
     }
@@ -59,6 +57,13 @@ class InsultMainViewModel(private val app: Application) : AndroidViewModel(app) 
                     database.insert(roomMapper.prepareForDatabase(it))
                 }
             }
+        }
+    }
+
+    fun getFavoritesList(): LiveData<List<InsultPresentationModel>> {
+        val favorites = database.getAll()
+        return Transformations.map(favorites) {
+            roomMapper.prepareRoomModelList(it)
         }
     }
 }

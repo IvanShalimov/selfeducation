@@ -26,6 +26,7 @@ class APIRetrofitImpl : API {
             return null
         }
 
+        Log.d("Ivan","$response")
         return if(response.isSuccessful) {
             response.body()?.let {
                 mapper.map(it)

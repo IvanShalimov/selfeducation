@@ -1,6 +1,8 @@
 package ru.ivan.practicecoroutineapplication.insultrandom.ui.repository
 
 import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import androidx.room.Room
 import ru.ivan.practicecoroutineapplication.insultrandom.ui.repository.models.InsultRoomModel
 
@@ -11,8 +13,8 @@ class DatabaseRepository(val context: Context) {
         AppDatabase::class.java,
         "database").build();
 
-    suspend fun getAll(): List<InsultRoomModel> {
-        return database.insultDao().getAll()
+    fun getAll(): LiveData<List<InsultRoomModel>> {
+        return database.insultDao().getAll().asLiveData()
     }
 
     suspend fun insert(insult: InsultRoomModel) {
