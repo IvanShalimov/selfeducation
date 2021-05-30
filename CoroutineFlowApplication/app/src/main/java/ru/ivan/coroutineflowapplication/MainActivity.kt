@@ -1,7 +1,6 @@
 package ru.ivan.coroutineflowapplication
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import ru.ivan.coroutineflowapplication.databinding.ActivityMainBinding
@@ -22,9 +21,10 @@ class MainActivity : AppCompatActivity() {
             )
 
         binding.actionButton.setOnClickListener {
-            viewModel.count { number ->
+            /*viewModel.count { number ->
                 Log.d("Ivan", "current number is $number")
-            }
+            }*/
+            viewModel.`L-O-V_E_joke`()
         }
     }
 }
