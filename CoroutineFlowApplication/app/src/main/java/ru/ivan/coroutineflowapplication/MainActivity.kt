@@ -1,6 +1,7 @@
 package ru.ivan.coroutineflowapplication
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import ru.ivan.coroutineflowapplication.databinding.ActivityMainBinding
@@ -25,6 +26,12 @@ class MainActivity : AppCompatActivity() {
                 Log.d("Ivan", "current number is $number")
             }*/
             viewModel.`L-O-V_E_joke`()
+        }
+
+        binding.insultButton.setOnClickListener {
+            viewModel.makeMeInsulted {
+                Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+            }
         }
     }
 }

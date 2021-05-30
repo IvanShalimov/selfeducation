@@ -9,10 +9,12 @@ import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
+import ru.ivan.coroutineflowapplication.api.InsultAPIImpl
 
 class MainViewModel : ViewModel() {
 
     private var currentJob: Job? = null
+    private val api = InsultAPIImpl()
 
     fun count(callback: (Int) -> Unit) {
         currentJob?.let {
@@ -39,6 +41,14 @@ class MainViewModel : ViewModel() {
             flow.collect { letter ->
                 Log.d("Ivan", "${STREAM.getByLetter(letter).value}")
                 delay(1000)
+            }
+        }
+    }
+
+    fun makeMeInsulted(callback: (String) -> Unit) {
+        viewModelScope.launch {
+            api.beInsulted().collect {
+                callback(it.insult)
             }
         }
     }
