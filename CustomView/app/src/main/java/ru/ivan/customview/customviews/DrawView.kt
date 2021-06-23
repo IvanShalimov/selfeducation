@@ -7,14 +7,18 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 
-class DrawView: View {
+class DrawView : View {
 
     constructor(context: Context) : this(context, null)
-    constructor(context: Context,  attrs: AttributeSet?):this(context, attrs, 0)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    )
 
     override fun onDraw(canvas: Canvas?) {
-        Log.d("Ivan","onDraw")
+        Log.d("Ivan", "onDraw")
         canvas?.drawColor(Color.GREEN)
     }
 }
