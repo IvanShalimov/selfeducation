@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ru.ivan.customview.DrawView
+    <ru.ivan.customview.customviews.DrawView
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintEnd_toEndOf="parent"

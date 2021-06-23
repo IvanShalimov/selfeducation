@@ -1,4 +1,4 @@
-package ru.ivan.customview
+package ru.ivan.customview.customviews
 
 import android.content.Context
 import android.graphics.Canvas

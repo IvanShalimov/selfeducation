@@ -1,4 +1,4 @@
-package ru.ivan.customview
+package ru.ivan.customview.customviews
 
 import android.content.Context
 import android.graphics.Canvas
@@ -9,7 +9,7 @@ import android.view.SurfaceView
 
 class DrawSurfaceView(context: Context) : SurfaceView(context), SurfaceHolder.Callback {
 
-    lateinit var drawThread:DrawThread
+    lateinit var drawThread: DrawThread
 
     init {
         holder.addCallback(this)
