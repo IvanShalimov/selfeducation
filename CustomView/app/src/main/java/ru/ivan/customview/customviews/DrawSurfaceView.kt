@@ -49,10 +49,10 @@ class DrawSurfaceView(context: Context) : SurfaceView(context), SurfaceHolder.Ca
                 canvas = null
                 try {
                     canvas = surfaceHolder.lockCanvas()
-                    canvas?.let {
-                        it.drawColor(Color.GREEN)
-                    } ?: continue
-                } finally {
+                    canvas?.drawColor(Color.GREEN)?: continue
+                } catch (exception:Exception) {
+                    Log.d("Ivan","${exception.message}")
+                }finally {
                     canvas?.let {
                         surfaceHolder.unlockCanvasAndPost(canvas)
                     }
