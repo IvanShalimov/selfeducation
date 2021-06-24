@@ -8,7 +8,11 @@ import android.graphics.Path
 import android.util.AttributeSet
 import android.view.View
 
-class RoundTextView: View {
+class RoundTextView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+): View(context, attrs, defStyleAttr){
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val path = Path()
@@ -18,15 +22,6 @@ class RoundTextView: View {
         paint.textSize = 20f
         paint.strokeWidth = 1f
     }
-
-    //Необходимые для View в layout конструкторы.
-    constructor(context: Context) : this(context, null)
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    )
 
     override fun onDraw(canvas: Canvas?) {
         canvas?.drawARGB(80, 102, 204, 255);

@@ -5,7 +5,11 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 
-class MatrixView: View {
+class MatrixView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+): View(context, attrs, defStyleAttr) {
 
     private val paint = Paint()
     private val path = Path()
@@ -15,15 +19,6 @@ class MatrixView: View {
         paint.strokeWidth = 3f
         paint.style = Paint.Style.STROKE
     }
-
-    //Необходимые для View в layout конструкторы.
-    constructor(context: Context) : this(context, null)
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    )
 
     override fun onDraw(canvas: Canvas?) {
         canvas?.drawARGB(80, 102,204, 255)

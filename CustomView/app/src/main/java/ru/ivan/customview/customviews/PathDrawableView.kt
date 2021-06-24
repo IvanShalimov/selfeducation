@@ -5,22 +5,17 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 
-class PathDrawableView : View {
+class PathDrawableView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+): View(context, attrs, defStyleAttr){
 
 
     private val paint = Paint()
     private val rectf = RectF(350f, 100f, 400f, 150f)
     private val path = Path()
     private val path1 = Path()
-
-    //Необходимые для View в layout конструкторы.
-    constructor(context: Context) : this(context, null)
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    )
 
     override fun onDraw(canvas: Canvas?) {
         canvas?.drawARGB(80, 102, 204, 255)

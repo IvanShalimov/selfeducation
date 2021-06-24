@@ -8,7 +8,11 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 
-class DrawRectWithPaint2 : View {
+class DrawRectWithPaint2 @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+): View(context, attrs, defStyleAttr){
 
     private val paint = Paint()
     private val rectf = RectF(700f, 100f, 800f, 150f)
@@ -33,14 +37,6 @@ class DrawRectWithPaint2 : View {
         400f
     ).toFloatArray()
 
-
-    constructor(context: Context) : this(context, null)
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    )
 
     override fun onDraw(canvas: Canvas?) {
         canvas?.drawARGB(80, 102, 204, 255)

@@ -8,19 +8,15 @@ import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.View
 
-class DrawRectWithPaint : View {
+class DrawRectWithPaint @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+): View(context, attrs, defStyleAttr){
 
     private val paint = Paint()
     private val rect = Rect()
 
-    //Необходимые для View в layout конструкторы.
-    constructor(context: Context) : this(context, null)
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    )
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
