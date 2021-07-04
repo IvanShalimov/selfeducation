@@ -31,10 +31,10 @@ class MatrixView @JvmOverloads constructor(
         canvas?.drawPath(path, paint)
 
         //Настраиваем матрицу на смещение
-        matrix.reset()
-        matrix.setTranslate(300f, 200f)
+        myMatrix.reset()
+        myMatrix.setTranslate(300f, 200f)
 
-        path.transform(matrix)
+        path.transform(myMatrix)
 
         paint.color = Color.BLUE
         canvas?.drawPath(path, paint)
